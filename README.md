@@ -18,6 +18,7 @@
 
 ### Features
 
+- Registration and log in to the app
 - Browse all countries in the app with detalis
 - Add countries to favourite list, remove favourites and clear stored countries
 - Search any country by name

@@ -3,6 +3,9 @@
 ![Screenshot](./src/assets/countries.jpeg)
 
 
+
+
+
 ![Screenshot](./src/assets/favourites.jpeg)
 
 ## Technologies used
@@ -16,8 +19,8 @@
 ### Features
 
 - Browse all countries in the app with detalis
-- Add and remove favourite countries
-- Search any country name
+- Add countries to favourite list, remove favourites and clear stored countries
+- Search any country by name
 - Navigate to different pages through the buttons and navbar
 
 ## How to run

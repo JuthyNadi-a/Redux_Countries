@@ -8,7 +8,6 @@
 - React-Redux
 - React-Bootstrap
 - Axios
-- [restcountries API](https://restcountries.com/)
 - [openweather map](https://openweathermap.org/)
 
 ### Features

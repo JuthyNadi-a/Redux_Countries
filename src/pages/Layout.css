@@ -1,0 +1,16 @@
+.layout-nav {
+    max-height: 7vh;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    background-color: rgba(234, 231, 231, 0.636);
+}
+.logout {
+    background-color: rgb(16, 62, 80);
+    color: aliceblue;
+    border: none;
+ }
+ .logout:hover {
+    background-color: rgb(3, 41, 56);
+    color: aliceblue;
+ }

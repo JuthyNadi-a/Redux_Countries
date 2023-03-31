@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const baseUrl = 'https://restcountries.com/v3.1/all';
+const baseUrl = 'https://restcountries.com/v3.1/all'
 
 const getAll = async () => {
-    const res = await axios.get(baseUrl);
-    return res.data
+    const response = await axios.get(baseUrl)
+    return response.data
 }
 
-export default { getAll }
+const countryService = {
+    getAll
+  }
+  
+  export default countryService;

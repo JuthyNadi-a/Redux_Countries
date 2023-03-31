@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import { ListGroupItem } from 'react-bootstrap';
-
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -9,14 +7,19 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { initializeCountries } from '../features/countriesSlice';
-import { clearFavourites } from '../features/favouritesSlice';
+import { addFavourites, clearFavourites } from '../features/favouritesSlice';
 
+import './Favourites.css'
+import './Countries.css'
 const Favourites = () => {
   let numFormatter= require('@skalwar/simple_number_formatter')
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let countriesList = useSelector((state) => state.countries.countries)
+  const favouriteList = useSelector((state) => state.favourites.favourites)
   const loading = useSelector((state) => state.countries.isLoading)
   const [search, setSearch] = useState('')
   const [favouritesList, setFavouritesList] = useState([]);
@@ -56,10 +59,20 @@ const Favourites = () => {
           </Form>
         </Col>
       </Row>
-      <Row xs={2} md={3} lg={4} className=" g-3">
-        <Button onClick={() => {dispatch(clearFavourites())}}>Clear favourites</Button>
+      <Row className="justify-content-between">
+        <Col md={4}>
+          <Button variant='light' onClick={()=> navigate('/countries')}>
+            <i className="bi bi-arrow-left"></i>
+          </Button>
+        </Col>
+        <Col md={4}>
+          <Link to="/countries" ms={0} onClick={() => {dispatch(clearFavourites())}}>
+            <Button className='button'>Clear favourites</Button>
+          </Link>
+        </Col>
       </Row>
-      <Row xs={2} md={3} lg={4} className=" g-3">
+      
+      <Row xs={3} md={4} lg={4} className=" g-3">
       {loading ? 'Loading... ': " "}
         {countriesList
           .filter((countries) => {
@@ -72,21 +85,18 @@ const Favourites = () => {
                 to={`/countries/${country.name.common}`}
                 state={{ country: country }}
               >
-                <Card className="h-100">
-                <Card.Img variant="top" src={country.flags.png} alt='' />
+                <Card className="h-100 countriesCard">
+                {favouriteList.includes(country.name.common) ? (<i className='bi bi-heart-fill text-danger m-1 p-1 favIcon'></i>
+              ) : (
+              <i className="bi bi-heart text-danger m-1 p-1 favIcon" onClick={() => dispatch(addFavourites(country.name.common))}></i>)}
+                <Card.Img variant="top" src={country?.flags?.svg} alt={country.flags.alt} />
                   <Card.Body className="d-flex flex-column">
-                    <Card.Title>{country.name.common}</Card.Title>
-                    <Card.Subtitle className="mb-5 text-muted">
-                      {country.name.official}
-                    </Card.Subtitle>
+                    <Card.Title className='countriesCard-title'>{country.name.common}</Card.Title>
                     <ListGroup
-                      variant="flush"
-                      className="flex-grow-1 justify-content-end"
+                      className="flex-grow-1 justify-content-end card-icon"
                     >
                       <ListGroup.Item>
-                        <i className="bi bi-translate me-2 ">
-                         { Object.values(country.languages || {}).join(', ')}
-                        </i>
+                        <i className="bi bi-globe2 me-2">    {country.name.official}</i>
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <i className="bi bi-cash-coin me-2 "> 
@@ -104,6 +114,7 @@ const Favourites = () => {
         )
         )}
       </Row>
+      
     </Container>
     )
 };

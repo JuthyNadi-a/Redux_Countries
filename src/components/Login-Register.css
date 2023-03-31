@@ -1,0 +1,18 @@
+.form {
+    color: aliceblue;
+}
+.link {
+    text-decoration: none;
+    font-weight: 900;
+    color: rgb(96, 153, 203);
+}
+.sign-up {
+    background-color: rgb(150, 184, 199);
+    color: rgb(3, 41, 56);
+    font-weight: 600;
+    border: none;
+ }
+.sign-up:hover {
+    background-color: rgb(101, 163, 213);
+    color: rgb(8, 37, 52);
+ }

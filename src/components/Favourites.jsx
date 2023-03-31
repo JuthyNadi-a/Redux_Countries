@@ -14,6 +14,7 @@ import { addFavourites, clearFavourites } from '../features/favouritesSlice';
 
 import './Favourites.css'
 import './Countries.css'
+
 const Favourites = () => {
   let numFormatter= require('@skalwar/simple_number_formatter')
   const dispatch = useDispatch();

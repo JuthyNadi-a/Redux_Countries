@@ -1,9 +1,12 @@
 import { useState,useEffect } from "react";
 import { Button } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import {auth, registerWithEmailAndPassword} from "../auth/firebase";
+
+import "./Login-Register.css"
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -22,31 +25,36 @@ const Register = () => {
     },[user, loading, navigate])
    
     return(
-        <div>
-            <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder = "Full name"
-            />
-            <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder = "Email"
-            />
-            <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder = "Password"
-            />
-            <Button onClick={register}>Register</Button>
+        <Form className="form">
+            <Form.Group className="mb-3" controlId="formBasicFullName">
+                <Form.Label>Full name</Form.Label>
+                <Form.Control 
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder = "Enter name here"/>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email here" value={email}
+                onChange={(e) => setEmail(e.target.value)}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Enter password here" value={password}
+                onChange={(e) => setPassword(e.target.value)}/>
+            </Form.Group>
+            
+            <Button className='sign-up' onClick={register}>
+                Register
+            </Button>
             <div>
-                Already have a account?
-                <Link to={"/login"}>Login</Link> now
+                Already have a account? 
+                <Link to={"/login"} className="link"> Login</Link> now
             </div>
-        </div>
+        </Form>
     )
 }
 

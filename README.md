@@ -5,10 +5,11 @@
 
 ## Technologies used
 
-- React-Redux
+- React-Redux and React-Redux-Toolkit
 - React-Bootstrap
 - Axios
-- [openweather map](https://openweathermap.org/)
+- [Open Weather Map](https://openweathermap.org/)
+- [Firebase Authentication](https://firebase.google.com/)
 
 ### Features
 

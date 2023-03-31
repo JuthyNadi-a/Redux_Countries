@@ -1,6 +1,8 @@
 # Rest Countries App with Redux
 
 ![Screenshot](./src/assets/countries.jpeg)
+
+
 ![Screenshot](./src/assets/favourites.jpeg)
 
 ## Technologies used
